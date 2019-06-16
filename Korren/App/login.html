@@ -1,0 +1,20 @@
+<head>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="329083135458-s2dp8a0u2spunfcmssribrbn91b24b6q.apps.googleusercontent.com">
+</head>
+
+<div class=" logincontainer" layout="row" fxLayoutAlign="center center">
+    <div flex="50" class="logincontent">
+        <ng-md-icon class="Korrenicon" icon="delete_sweep" size="80%"></ng-md-icon>
+        <p class="Korrentext"> MAKE KORREN GREATE AGIAN!</p>
+        </br>
+        <div class="g-signin2" data-onsuccess="onSignIn" id="login" ng-controller="LoginCtrl"> </div>
+    </div>
+</div>
+
+<script>
+function onSignIn(googleUser) {
+    var scope = angular.element(document.getElementById('login')).scope();
+    scope.moveon(googleUser);
+}
+</script>

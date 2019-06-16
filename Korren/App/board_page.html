@@ -1,0 +1,43 @@
+<head>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="329083135458-s2dp8a0u2spunfcmssribrbn91b24b6q.apps.googleusercontent.com">
+</head>
+<div class="g-signin2" data-onsuccess="onSignIn" id="login" ng-controller="LoginCtrl"></div>
+<div id="board-page" fxlayout="row wrap">
+    <div fxflex="30" ng-repeat="(listindex,list) in lists" class="list" id="looplist" flex>
+        <input class="list-name" ng-model="list.listName" id="listName" ng-init="oldValue = list.listName" ng-blur="updateName(list)" ng-focus="oldValue = list.listName" ng-dblclick="console.log('dbclick')" />
+        <ng-md-icon class=" settingsicon" icon="settings" ng-click="displayoptions = !displayoptions; addpersonbool = false"></ng-md-icon>
+        <br>
+        <button ng-show="displayoptions" class="remove-list" ng-click="removeList(list)" id="remove"> Remove Room </button>
+        <button ng-show="displayoptions" class="add-person" ng-click="addpersonbool= !addpersonbool" ng-init="addpersonbool=false"> Add Person </button>
+        <ng-md-icon ng-show="displayoptions" class="nextweek" icon="next_week" ng-click="nextweek(list)"> </ng-md-icon>
+        <br ng-if="displayoptions && addpersonbool">
+        <input ng-if="displayoptions && addpersonbool" class="Email" ng-model="list.newPerson" id="EmailField" ng-blur="addUser(list); list.newPerson = '' " ng-focus=placeholder placeholder="generic.ex@mejl.com" />
+        <md-content layout=" column" ng-repeat="(userindex,user) in list.users">
+            <md-chips ng-model="usersInRoom" name="userName" readonly="true" selectable="true" md-removable="true" md-on-remove="updateUsers(list,user)" md-max-chips="8" ng-init="usersInRoom = [user]">
+                <md-chip-template>
+                    <ng-md-icon class="assignedUsericon" icon="person_outline" ng-style=" {fill: list.Colors[userindex]}"></ng-md-icon>
+                    <strong>{{user}}</strong>
+                </md-chip-template>
+            </md-chips>
+        </md-content>
+        <div class="list-content" dnd-list="list.tickets">
+            <div ng-repeat="(ticketindex,ticket) in list.tickets" class="ticket">
+                <div class="chorediv">
+                    <ng-md-icon class="assignedUsericonatchore" icon="person_outline" ng-init="myfillcolor=list.userticketcolor[ticketindex]" ng-click="myfillcolor = changeassigneduser(list,ticketindex)" ng-style="{fill:list.userticketcolor[ticketindex]}"></ng-md-icon>
+                    <!--ng-style=" {fill: list.Colors[0][ticketindex]}"-->
+                    <input class="ticket-title" ng-model="ticket.title" id="Chore" ng-init="oldValue = ticket.title" ng-blur="updateTickets(list)" ng-focus="oldValue = ticket.title" />
+                    <ng-md-icon class="removeicons" icon="remove_circle" ng-click='removeTicket(list,ticket.title) '></ng-md-icon> <!-- https://klarsys.github.io/angular-material-icons/  for more icons-->
+                </div>
+            </div>
+        </div>
+        <div class="buttondiv">
+            <ng-md-icon class="addchore" icon="add_circle" size="56" ng-click='addTicket(list)'></ng-md-icon>
+            <ng-md-icon class=" chatticon" icon="chat_bubble" ng-click="movetochatt(list)"></ng-md-icon>
+        </div>
+    </div>
+    <div class="addicon" fxflex="30" ng-if=" Data.getEmail() != '' && lists.length >=0  " flex>
+        <ng-md-icon id="addiconid" icon="add_circle" size="100%" ng-click='addList()'></ng-md-icon>
+    </div>
+</div>
+</div>

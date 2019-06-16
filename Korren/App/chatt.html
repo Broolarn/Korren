@@ -1,0 +1,32 @@
+<div class="chattpage" fxlayout="row wrap" fxLayoutAlign="space-between">
+    <div fxflex="30" class="chattcontent">
+        <br>
+        <div class="returntoboardpage">
+            <ng-md-icon class="returnicon" icon="keyboard_backspace" size="5vw" ng-click="moveback()"></ng-md-icon>
+        </div>
+        <div fxflex="30" class="messagesclass">
+            <input class="list-name" ng-model="list.listName" id="listName" ng-init="oldValue = list.listName" />
+            <br>
+            <md-content class="userchips" layout=" column" ng-repeat="(userindex,user) in list.users">
+                <md-chips ng-model="usersInRoom" name="userName" readonly="true" selectable="true" md-max-chips="5" ng-init="usersInRoom = [user] ">
+                    <md-chip-template>
+                        <ng-md-icon class="assignedUsericon" icon="person_outline" ng-style="{fill:list.Colors[userindex]}"></ng-md-icon>
+                        <strong>{{user}}</strong>
+                    </md-chip-template>
+                </md-chips>
+            </md-content>
+            <br>
+        </div>
+        <md-content flex layout="column" id="messages"></md-content>
+        <br>
+        <div class="inputmesseges">
+            <input id="name" class="form-control" placeholder="Name" ng-model="loggedinsuer">
+            <textarea id="message" class="form-control" placeholder="Your Message Here"></textarea>
+            <button id="send" class="btn btn-success">Send</button>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<script>
+</script>

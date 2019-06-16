@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+
+  <!-- Jquery -->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+
+  <!-- Angular libs that are not material -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-route.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-aria.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-messages.min.js"></script>
+
+  <!-- Angular Material Library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.js"></script>
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.css"> 
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.7.1/angular-material-icons.min.js"></script> 
+
+  <!--Socketio-->
+  <script src="/node_modules/socket.io-client/dist/socket.io.js"></script>
+
+  <!--Google sign in-->
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="google-signin-client_id" content="329083135458-s2dp8a0u2spunfcmssribrbn91b24b6q.apps.googleusercontent.com">
+
+  <!-- links-->
+  <link rel="shortcut icon" href="icon.png">
+  <link rel="stylesheet" href="style.css"/>
+
+</head>
+
+<body>
+
+  <div id="tasklistdiv">
+    <div ng-view="" id="ngviewer"></div>
+
+    <script src="App/app.js"></script> 
+
+    <!-- Controllers -->
+    <script src="App/BoardPageCtrl.js"></script>  
+    <script src="App/LoginCtrl.js"></script>
+    <script src="App/chattCtrl.js"></script>
+
+  </div>
+
+</body>
+</html>
