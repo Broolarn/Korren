@@ -11,7 +11,7 @@
   "dependencies": {
     "angular-material": "^1.1.18",
     "body-parser": "^1.18.3",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "http": "0.0.0",
     "mocha": "^6.1.4",
     "mongoose": "^5.4.22",
